@@ -20,26 +20,26 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ── Dark Theme CSS ──────────────────────────────────────────────────────────────
+# ── Light Theme CSS ─────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
     /* Main background */
-    .stApp { background-color: #0a0c14; color: #ccd6f6; }
-    [data-testid="stSidebar"] { background-color: #0d1117; border-right: 1px solid #1e2a3a; }
-    
+    .stApp { background-color: #f4f6fb; color: #1a2340; }
+    [data-testid="stSidebar"] { background-color: #eef1f8; border-right: 1px solid #d0d8ec; }
+
     /* KPI Cards */
     .kpi-card {
-        background: #0f1117;
-        border: 1px solid #1e2a3a;
+        background: #ffffff;
+        border: 1px solid #d0d8ec;
         border-radius: 12px;
         padding: 24px 20px;
         text-align: center;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        box-shadow: 0 2px 12px rgba(80,100,160,0.08);
     }
     .kpi-label {
         font-size: 11px;
         letter-spacing: 2px;
-        color: #8892b0;
+        color: #5a6a8a;
         text-transform: uppercase;
         margin-bottom: 10px;
         font-weight: 600;
@@ -47,19 +47,19 @@ st.markdown("""
     .kpi-value {
         font-size: 38px;
         font-weight: 700;
-        color: #6ba3d6;
+        color: #2563eb;
         line-height: 1;
     }
     .kpi-sub {
         font-size: 12px;
-        color: #8892b0;
+        color: #5a6a8a;
         margin-top: 8px;
     }
 
     /* Key Point Banner */
     .key-banner {
-        background: #0f1117;
-        border: 1px solid #1e2a3a;
+        background: #ffffff;
+        border: 1px solid #d0d8ec;
         border-radius: 12px;
         padding: 22px 32px;
         text-align: center;
@@ -68,14 +68,14 @@ st.markdown("""
     .key-banner-label {
         font-size: 11px;
         letter-spacing: 2px;
-        color: #8892b0;
+        color: #5a6a8a;
         text-transform: uppercase;
         font-weight: 700;
         margin-bottom: 10px;
     }
     .key-banner-text {
         font-size: 17px;
-        color: #6ba3d6;
+        color: #2563eb;
         font-weight: 500;
         line-height: 1.5;
     }
@@ -84,45 +84,45 @@ st.markdown("""
     .section-header {
         font-size: 13px;
         letter-spacing: 2px;
-        color: #64ffda;
+        color: #0d9488;
         text-transform: uppercase;
         font-weight: 700;
         margin: 28px 0 12px 0;
-        border-bottom: 1px solid #1e2a3a;
+        border-bottom: 1px solid #d0d8ec;
         padding-bottom: 8px;
     }
 
     /* Risk badge */
-    .risk-high { color: #ef5350; font-weight: 700; }
-    .risk-mid  { color: #ffa726; font-weight: 700; }
-    .risk-low  { color: #66bb6a; font-weight: 700; }
+    .risk-high { color: #dc2626; font-weight: 700; }
+    .risk-mid  { color: #d97706; font-weight: 700; }
+    .risk-low  { color: #16a34a; font-weight: 700; }
 
     /* Tabs */
-    .stTabs [data-baseweb="tab-list"] { background: #0d1117; gap: 4px; }
+    .stTabs [data-baseweb="tab-list"] { background: #eef1f8; gap: 4px; }
     .stTabs [data-baseweb="tab"] {
-        background: #0f1117; color: #8892b0;
-        border-radius: 6px 6px 0 0; border: 1px solid #1e2a3a;
+        background: #f4f6fb; color: #5a6a8a;
+        border-radius: 6px 6px 0 0; border: 1px solid #d0d8ec;
         padding: 8px 18px; font-size: 13px;
     }
     .stTabs [aria-selected="true"] {
-        background: #1e2a3a !important; color: #64ffda !important;
-        border-bottom: 2px solid #64ffda !important;
+        background: #ffffff !important; color: #0d9488 !important;
+        border-bottom: 2px solid #0d9488 !important;
     }
 
     /* Metric overrides */
     [data-testid="metric-container"] {
-        background: #0f1117; border: 1px solid #1e2a3a;
+        background: #ffffff; border: 1px solid #d0d8ec;
         border-radius: 10px; padding: 12px;
     }
-    [data-testid="metric-container"] label { color: #8892b0 !important; }
+    [data-testid="metric-container"] label { color: #5a6a8a !important; }
     [data-testid="metric-container"] [data-testid="metric-value"] {
-        color: #6ba3d6 !important; font-size: 28px !important;
+        color: #2563eb !important; font-size: 28px !important;
     }
 
     div[data-testid="stSelectbox"] label,
-    div[data-testid="stSlider"] label { color: #8892b0; font-size: 13px; }
+    div[data-testid="stSlider"] label { color: #5a6a8a; font-size: 13px; }
 
-    h1, h2, h3 { color: #ccd6f6 !important; }
+    h1, h2, h3 { color: #1a2340 !important; }
 
     /* Hide default streamlit header */
     header[data-testid="stHeader"] { background: transparent; }
@@ -131,23 +131,23 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── Plot defaults ───────────────────────────────────────────────────────────────
-PLOT_BG   = "#0f1117"
-PAPER_BG  = "#0f1117"
-FONT_CLR  = "#8892b0"
-GRID_CLR  = "#1e2a3a"
-RED       = "#ef5350"
-GREEN     = "#66bb6a"
-BLUE      = "#6ba3d6"
-TEAL      = "#64ffda"
+PLOT_BG   = "#ffffff"
+PAPER_BG  = "#f4f6fb"
+FONT_CLR  = "#3a4a6a"
+GRID_CLR  = "#d0d8ec"
+RED       = "#dc2626"
+GREEN     = "#16a34a"
+BLUE      = "#2563eb"
+TEAL      = "#0d9488"
 
 def dark_layout(fig, title="", height=380):
     fig.update_layout(
-        title=dict(text=title, font=dict(color="#ccd6f6", size=14)),
+        title=dict(text=title, font=dict(color="#1a2340", size=14)),
         paper_bgcolor=PAPER_BG, plot_bgcolor=PLOT_BG,
         font=dict(color=FONT_CLR, size=11),
         height=height,
         margin=dict(l=40, r=20, t=50 if title else 20, b=40),
-        legend=dict(bgcolor="rgba(0,0,0,0)", bordercolor=GRID_CLR, borderwidth=1)
+        legend=dict(bgcolor="rgba(255,255,255,0.8)", bordercolor=GRID_CLR, borderwidth=1)
     )
     fig.update_xaxes(gridcolor=GRID_CLR, zerolinecolor=GRID_CLR)
     fig.update_yaxes(gridcolor=GRID_CLR, zerolinecolor=GRID_CLR)
@@ -181,17 +181,17 @@ with st.sidebar:
     st.markdown(f"""
     <div style='text-align:center; padding: 16px 0 8px 0;'>
         <div style='font-size:26px;'>📡</div>
-        <div style='font-size:16px; font-weight:700; color:#ccd6f6; letter-spacing:1px;'>
+        <div style='font-size:16px; font-weight:700; color:#1a2340; letter-spacing:1px;'>
             TELCO CHURN
         </div>
-        <div style='font-size:11px; color:#8892b0; letter-spacing:2px; margin-top:4px;'>
+        <div style='font-size:11px; color:#5a6a8a; letter-spacing:2px; margin-top:4px;'>
             CAPSTONE PROJECT
         </div>
     </div>
-    <hr style='border-color:#1e2a3a; margin: 12px 0;'>
+    <hr style='border-color:#d0d8ec; margin: 12px 0;'>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div style='color:#8892b0; font-size:12px; letter-spacing:1px; margin-bottom:8px;'>NAVIGATION</div>", unsafe_allow_html=True)
+    st.markdown("<div style='color:#5a6a8a; font-size:12px; letter-spacing:1px; margin-bottom:8px;'>NAVIGATION</div>", unsafe_allow_html=True)
 
     page = st.radio(
         "", 
@@ -199,17 +199,17 @@ with st.sidebar:
         label_visibility="collapsed"
     )
 
-    st.markdown("<hr style='border-color:#1e2a3a; margin: 16px 0;'>", unsafe_allow_html=True)
+    st.markdown("<hr style='border-color:#d0d8ec; margin: 16px 0;'>", unsafe_allow_html=True)
     st.markdown(f"""
-    <div style='font-size:11px; color:#8892b0; line-height:1.8;'>
-        <b style='color:#ccd6f6;'>Dataset</b><br>
+    <div style='font-size:11px; color:#5a6a8a; line-height:1.8;'>
+        <b style='color:#1a2340;'>Dataset</b><br>
         Rows: {TOTAL:,}<br>
         Features: {df.shape[1]}<br>
         Model: GBM (Recall-optimised)<br>
         <br>
-        <b style='color:#ccd6f6;'>Group</b><br>
+        <b style='color:#1a2340;'>Group</b><br>
         Rakesh · Edward (Seongmin Choi) · Mawuko<br>
-        Fanshawe College — 2025
+        Fanshawe College — 2026
     </div>
     """, unsafe_allow_html=True)
 
@@ -220,12 +220,12 @@ if page == "🏠  Overview":
 
     st.markdown("""
     <div style='margin-bottom:6px;'>
-        <span style='font-size:11px; color:#64ffda; letter-spacing:2px; text-transform:uppercase;'>
+        <span style='font-size:11px; color:#0d9488; letter-spacing:2px; text-transform:uppercase;'>
         DATA VISUALIZATION · CAPSTONE
         </span>
     </div>
     <h1 style='margin:0 0 4px 0; font-size:28px;'>Telco Customer Churn Analysis</h1>
-    <p style='color:#8892b0; margin:0 0 24px 0; font-size:14px;'>
+    <p style='color:#5a6a8a; margin:0 0 24px 0; font-size:14px;'>
         Recall-Centric Churn Prediction Dashboard
     </p>
     """, unsafe_allow_html=True)
@@ -270,8 +270,8 @@ if page == "🏠  Overview":
     col_a, col_b = st.columns(2)
     with col_a:
         st.markdown("""
-        <div style='background:#0f1117; border:1px solid #1e2a3a; border-left:3px solid #ef5350;
-                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#ccd6f6;'>
+        <div style='background:#ffffff; border:1px solid #d0d8ec; border-left:3px solid #ef5350;
+                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#1a2340;'>
             <b style='color:#ef5350;'>⚠️ Missing a Churner</b><br>
             A customer who leaves costs the company lost lifetime revenue, 
             acquisition costs to replace them, and reputational risk — a far 
@@ -280,9 +280,9 @@ if page == "🏠  Overview":
         """, unsafe_allow_html=True)
     with col_b:
         st.markdown("""
-        <div style='background:#0f1117; border:1px solid #1e2a3a; border-left:3px solid #64ffda;
-                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#ccd6f6;'>
-            <b style='color:#64ffda;'>✅ Why Recall Wins</b><br>
+        <div style='background:#ffffff; border:1px solid #d0d8ec; border-left:3px solid #0d9488;
+                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#1a2340;'>
+            <b style='color:#0d9488;'>✅ Why Recall Wins</b><br>
             With Recall = 0.78, we catch 78% of all churners. Companies can 
             immediately launch <b>1,869 personalised promotions</b> targeted at 
             each individual's specific reason for churn.
@@ -300,13 +300,13 @@ if page == "🏠  Overview":
             marker=dict(colors=[GREEN, RED], line=dict(color=PLOT_BG, width=3)),
             hole=0.6,
             textinfo="percent+label",
-            textfont=dict(size=13, color="#ccd6f6"),
+            textfont=dict(size=13, color="#1a2340"),
             pull=[0, 0.05]
         ))
         fig_pie.add_annotation(
             text=f"<b>{CHURN_RATE:.1f}%</b><br><span style='font-size:10px'>churn</span>",
             x=0.5, y=0.5, showarrow=False,
-            font=dict(size=18, color="#ccd6f6"), align="center"
+            font=dict(size=18, color="#1a2340"), align="center"
         )
         dark_layout(fig_pie, "Churn Distribution", height=320)
         st.plotly_chart(fig_pie, use_container_width=True)
@@ -323,7 +323,7 @@ if page == "🏠  Overview":
                 name=row["Contract"],
                 text=[f"{row['rate']:.1f}%"],
                 textposition="outside",
-                textfont=dict(color="#ccd6f6", size=13, family="Arial Black")
+                textfont=dict(color="#1a2340", size=13, family="Arial Black")
             ))
         dark_layout(fig_c, "Churn Rate by Contract Type", height=320)
         fig_c.update_layout(showlegend=False, bargap=0.4)
@@ -344,16 +344,16 @@ if page == "🏠  Overview":
         bar_fill = int(score * 320)
         with col:
             st.markdown(f"""
-            <div style='background:#0f1117; border:1px solid #1e2a3a; border-radius:10px;
+            <div style='background:#ffffff; border:1px solid #d0d8ec; border-radius:10px;
                         padding:16px 14px; height:180px;'>
-                <div style='font-size:11px; color:#64ffda; font-weight:700; margin-bottom:8px;'>{name}</div>
-                <div style='background:#1e2a3a; border-radius:4px; height:6px; margin-bottom:10px;'>
+                <div style='font-size:11px; color:#0d9488; font-weight:700; margin-bottom:8px;'>{name}</div>
+                <div style='background:#d0d8ec; border-radius:4px; height:6px; margin-bottom:10px;'>
                     <div style='background:{RED}; width:{bar_fill}px; max-width:100%; height:6px; border-radius:4px;'></div>
                 </div>
                 <div style='font-size:22px; font-weight:700; color:{RED}; margin-bottom:6px;'>
                     {score:.0%}
                 </div>
-                <div style='font-size:11px; color:#8892b0; line-height:1.4;'>{tip}</div>
+                <div style='font-size:11px; color:#5a6a8a; line-height:1.4;'>{tip}</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -364,7 +364,7 @@ if page == "🏠  Overview":
 elif page == "📊  EDA":
 
     st.markdown("<h2 style='margin-bottom:4px;'>Exploratory Data Analysis</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#8892b0; font-size:13px;'>Understanding patterns that drive customer churn</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#5a6a8a; font-size:13px;'>Understanding patterns that drive customer churn</p>", unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4 = st.tabs([
         "📈 Numerical Features", "📦 Categorical Features",
@@ -426,7 +426,7 @@ elif page == "📊  EDA":
                 marker_color=colors_bar,
                 text=[f"{r:.1f}%" for r in ct["rate"]],
                 textposition="outside",
-                textfont=dict(color="#ccd6f6")
+                textfont=dict(color="#1a2340")
             ))
             dark_layout(fig_bar, f"Churn Rate by {cat_col}", height=360)
             fig_bar.update_yaxes(title_text="Churn Rate (%)", range=[0, ct["rate"].max() * 1.2])
@@ -453,15 +453,15 @@ elif page == "📊  EDA":
             zmid=0,
             text=np.round(corr.values, 3),
             texttemplate="%{text}",
-            textfont=dict(size=14, color="#ccd6f6")
+            textfont=dict(size=14, color="#1a2340")
         ))
         dark_layout(fig_heat, "Correlation Matrix — Numerical Features", height=420)
         st.plotly_chart(fig_heat, use_container_width=True)
 
         st.markdown("""
-        <div style='background:#0f1117; border:1px solid #1e2a3a; border-left:3px solid #64ffda;
-                    border-radius:8px; padding:16px 20px; margin-top:12px; font-size:14px; color:#ccd6f6; line-height:1.7;'>
-            <b style='color:#64ffda;'>📌 Key Insights</b><br>
+        <div style='background:#ffffff; border:1px solid #d0d8ec; border-left:3px solid #0d9488;
+                    border-radius:8px; padding:16px 20px; margin-top:12px; font-size:14px; color:#1a2340; line-height:1.7;'>
+            <b style='color:#0d9488;'>📌 Key Insights</b><br>
             • <b>tenure ↔ Churn: −0.35</b> — Longest-serving customers are least likely to leave.<br>
             • <b>MonthlyCharges ↔ Churn: +0.19</b> — Higher bills are a push factor toward churn.<br>
             • <b>TotalCharges ↔ Churn: −0.20</b> — Mirrors tenure; long-term customers accumulate higher totals.
@@ -480,15 +480,15 @@ elif page == "📊  EDA":
             colorscale="Bluered",
             text=np.round(pivot.values, 1),
             texttemplate="%{text}%",
-            textfont=dict(size=15, color="#ccd6f6"),
+            textfont=dict(size=15, color="#1a2340"),
             colorbar=dict(title="Churn %")
         ))
         dark_layout(fig_h2, "Churn Rate: Contract Type × Internet Service", height=380)
         st.plotly_chart(fig_h2, use_container_width=True)
 
         st.markdown("""
-        <div style='background:#0f1117; border:1px solid #1e2a3a; border-left:3px solid #ef5350;
-                    border-radius:8px; padding:16px 20px; margin-top:12px; font-size:14px; color:#ccd6f6;'>
+        <div style='background:#ffffff; border:1px solid #d0d8ec; border-left:3px solid #ef5350;
+                    border-radius:8px; padding:16px 20px; margin-top:12px; font-size:14px; color:#1a2340;'>
             <b style='color:#ef5350;'>🔥 Critical Finding</b> — 
             Fiber Optic + Month-to-month contract customers experience a <b>~61% churn rate</b>, 
             the single highest-risk cohort. Retention campaigns must prioritise this segment first.
@@ -502,7 +502,7 @@ elif page == "📊  EDA":
 elif page == "⚠️  High-Risk Customers":
 
     st.markdown("<h2 style='margin-bottom:4px;'>High-Risk Customer Identification</h2>", unsafe_allow_html=True)
-    st.markdown(f"""<p style='color:#8892b0; font-size:13px;'>
+    st.markdown(f"""<p style='color:#5a6a8a; font-size:13px;'>
         Targeting <b style='color:#ef5350;'>{TARGET_N:,} high-risk customers</b> for personalised 
         retention interventions — powered by our Recall-optimised GBM model (Recall = {RECALL}).
     </p>""", unsafe_allow_html=True)
@@ -587,7 +587,7 @@ elif page == "⚠️  High-Risk Customers":
             x=rl_counts.index.tolist(), y=rl_counts.values,
             marker_color=rl_colors,
             text=[f"{int(v):,}" for v in rl_counts.values],
-            textposition="outside", textfont=dict(color="#ccd6f6")
+            textposition="outside", textfont=dict(color="#1a2340")
         ))
         dark_layout(fig_rl, "Customers by Risk Level", height=300)
         st.plotly_chart(fig_rl, use_container_width=True)
@@ -648,12 +648,12 @@ elif page == "⚠️  High-Risk Customers":
     for col, (icon, title, subtitle, desc) in zip(cols5, strats):
         with col:
             st.markdown(f"""
-            <div style='background:#0f1117; border:1px solid #1e2a3a; border-radius:10px;
+            <div style='background:#ffffff; border:1px solid #d0d8ec; border-radius:10px;
                         padding:18px 14px; height:200px;'>
                 <div style='font-size:24px; margin-bottom:8px;'>{icon}</div>
-                <div style='font-size:13px; font-weight:700; color:#ccd6f6; margin-bottom:4px;'>{title}</div>
-                <div style='font-size:11px; color:#64ffda; margin-bottom:8px;'>{subtitle}</div>
-                <div style='font-size:11px; color:#8892b0; line-height:1.5;'>{desc}</div>
+                <div style='font-size:13px; font-weight:700; color:#1a2340; margin-bottom:4px;'>{title}</div>
+                <div style='font-size:11px; color:#0d9488; margin-bottom:8px;'>{subtitle}</div>
+                <div style='font-size:11px; color:#5a6a8a; line-height:1.5;'>{desc}</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -664,7 +664,7 @@ elif page == "⚠️  High-Risk Customers":
 elif page == "🔮  Model Performance":
 
     st.markdown("<h2 style='margin-bottom:4px;'>Model Performance</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#8892b0; font-size:13px;'>Comparison of 8 classifiers — GBM selected as optimal for Recall-centric churn detection</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#5a6a8a; font-size:13px;'>Comparison of 8 classifiers — GBM selected as optimal for Recall-centric churn detection</p>", unsafe_allow_html=True)
 
     # Results table (from notebook outputs)
     results_data = {
@@ -684,20 +684,20 @@ elif page == "🔮  Model Performance":
     for col in res_df.columns:
         if col in metric_cols:
             max_v = res_df[col].max()
-            cell_colors.append(["#1e3a2e" if v == max_v else "#0f1117" for v in res_df[col]])
+            cell_colors.append(["#d1fae5" if v == max_v else "#ffffff" for v in res_df[col]])
         else:
-            cell_colors.append(["#0f1117"] * len(res_df))
+            cell_colors.append(["#ffffff"] * len(res_df))
 
     fig_tbl = go.Figure(go.Table(
         header=dict(
             values=[f"<b>{c}</b>" for c in res_df.columns],
-            fill_color="#1e2a3a", font=dict(color=TEAL, size=13),
+            fill_color="#d0d8ec", font=dict(color=TEAL, size=13),
             align="center", height=34
         ),
         cells=dict(
             values=[res_df[c] for c in res_df.columns],
             fill_color=cell_colors,
-            font=dict(color="#ccd6f6", size=12),
+            font=dict(color="#1a2340", size=12),
             align="center", height=30
         )
     ))
@@ -708,7 +708,7 @@ elif page == "🔮  Model Performance":
     st.plotly_chart(fig_tbl, use_container_width=True)
 
     st.markdown("""
-    <div style='font-size:12px; color:#8892b0; margin-top:-8px; margin-bottom:16px;'>
+    <div style='font-size:12px; color:#5a6a8a; margin-top:-8px; margin-bottom:16px;'>
         🟢 Green cells indicate the best value per metric
     </div>
     """, unsafe_allow_html=True)
@@ -754,7 +754,7 @@ elif page == "🔮  Model Performance":
             x=sorted_df["Model"], y=sorted_df[bar_metric],
             marker_color=bar_clrs,
             text=[f"{v:.3f}" for v in sorted_df[bar_metric]],
-            textposition="outside", textfont=dict(color="#ccd6f6")
+            textposition="outside", textfont=dict(color="#1a2340")
         ))
         dark_layout(fig_bar, f"Model Ranking by {bar_metric}", height=360)
         fig_bar.update_yaxes(range=[0, sorted_df[bar_metric].max() * 1.18], title_text=bar_metric)
@@ -766,8 +766,8 @@ elif page == "🔮  Model Performance":
 
     with col_a:
         st.markdown(f"""
-        <div style='background:#0f1117; border:1px solid #1e2a3a; border-left:3px solid {TEAL};
-                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#ccd6f6;'>
+        <div style='background:#ffffff; border:1px solid #d0d8ec; border-left:3px solid {TEAL};
+                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#1a2340;'>
             <b style='color:{TEAL};'>GBM — Best Balanced Model</b><br><br>
             • <b>AUC = 0.852</b> — Highest discriminative power overall<br>
             • Gradient Boosting builds trees sequentially, each correcting prior errors<br>
@@ -779,8 +779,8 @@ elif page == "🔮  Model Performance":
 
     with col_b:
         st.markdown(f"""
-        <div style='background:#0f1117; border:1px solid #1e2a3a; border-left:3px solid {RED};
-                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#ccd6f6;'>
+        <div style='background:#ffffff; border:1px solid #d0d8ec; border-left:3px solid {RED};
+                    border-radius:8px; padding:18px 20px; line-height:1.7; font-size:14px; color:#1a2340;'>
             <b style='color:{RED};'>Recall-Centric Design</b><br><br>
             From a business perspective, <b>missing a potential churner</b> is a much 
             costlier mistake than misidentifying a loyal one.<br><br>
@@ -815,7 +815,7 @@ elif page == "🔮  Model Performance":
         orientation="h",
         marker=dict(color=shap_colors),
         text=[f"{v:.3f}" for v in shap_df["Mean_SHAP"]],
-        textposition="outside", textfont=dict(color="#ccd6f6", size=11)
+        textposition="outside", textfont=dict(color="#1a2340", size=11)
     ))
     dark_layout(fig_shap, "Top 15 Features by Mean |SHAP Value| (GBM)", height=500)
     fig_shap.update_xaxes(title_text="Mean |SHAP Value|", range=[0, 0.37])
