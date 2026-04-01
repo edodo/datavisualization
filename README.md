@@ -59,7 +59,7 @@ streamlit run telco_churn_dashboard.py
 ---
 
 ## Author
-* **Rakesh , Seongmin Choi (Edward) , MawuKo**
+* **Edward (Seongmin Choi)**
 * AI Developer | Software Architect 
 
 > **Note:** This project was developed as part of the AI Post-graduate program at Fanshawe College.
